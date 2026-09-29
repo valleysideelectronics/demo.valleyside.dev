@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#0A2A33">
+<title>Membership Card Console demo · Valleyside Electronics LLC</title>
+<meta name="description" content="Try the membership card console with a fictional sample roster: issue, renew and cancel signed digital cards. Nothing is sent anywhere.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="console/styles.css">
+<style>
+.vs-demo-bar{position:sticky;top:0;z-index:1000;display:flex;flex-wrap:wrap;gap:4px 16px;align-items:center;justify-content:center;padding:7px 14px;background:#0B171B;color:#CFE3E7;font:500 13px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-align:center}
+.vs-demo-bar a{color:#9ED8E3;font-weight:600;text-decoration:none}
+.vs-demo-bar a:hover,.vs-demo-bar a:focus-visible{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="vs-demo-bar" role="note"><span>Demo &middot; Cove Line Towing and its members are fictional, with sample data &middot; Built by Valleyside Electronics LLC</span><span><a href="/">&larr; All demos</a> &nbsp;&middot;&nbsp; <a href="https://valleyside.dev">valleyside.dev</a></span></div>
+<div id="root"><div style="min-height:100vh;display:grid;place-items:center;color:#5F7277;font:14px system-ui">Loading the demo…</div></div>
+<script>window.CONSOLE_DEMO = true;</script>
+<script type="module" src="console/app.js"></script>
+</body>
+</html>

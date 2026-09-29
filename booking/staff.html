@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Staff Schedule — Sunfish Bay Rentals (Demo)</title>
+<meta name="description" content="Staff-side day and week schedule for the Sunfish Bay Rentals booking demo, built by Valleyside Electronics LLC.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="demo-banner">
+  <a href="/">&larr; All demos</a>
+  <span><strong>Demo</strong> &middot; Sunfish Bay Rentals is a fictional business &middot; Built by Valleyside Electronics LLC</span>
+  <a href="https://valleyside.dev">valleyside.dev</a>
+</div>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="brand">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="13" r="8" fill="#ffb703"/><path d="M2 24 Q9 19 17 24 T32 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M2 29 Q9 24 17 29 T32 29" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity="0.7"/></svg>
+      <span>Sunfish Bay Rentals<br><span class="brand-tag">Staff schedule</span></span>
+    </a>
+    <a class="header-phone" href="index.html">New booking</a>
+  </div>
+</header>
+
+<main>
+  <h1>Staff schedule</h1>
+  <p class="lede">Every booking made in this browser, plus the demo's seeded reservations. Nothing here is a real reservation.</p>
+
+  <div class="staff-toolbar">
+    <div class="staff-toolbar" style="margin:0">
+      <button type="button" class="btn btn-secondary" id="prevBtn" aria-label="Previous">&larr;</button>
+      <input type="date" id="dateInput" aria-label="Jump to date">
+      <button type="button" class="btn btn-secondary" id="nextBtn" aria-label="Next">&rarr;</button>
+      <button type="button" class="btn btn-secondary" id="todayBtn">Today</button>
+    </div>
+    <div class="staff-toolbar" style="margin:0">
+      <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.85rem;font-weight:600">
+        <input type="checkbox" id="weekToggle"> Show full week
+      </label>
+      <button type="button" class="btn btn-danger" id="resetBtn">Reset demo</button>
+    </div>
+  </div>
+
+  <div id="scheduleRoot"></div>
+</main>
+
+<footer class="site-footer">
+  <p><a href="index.html">Back to booking flow</a> &middot; Built by
+  <a href="https://valleyside.dev">Valleyside Electronics LLC</a>.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="staff.js"></script>
+</body>
+</html>

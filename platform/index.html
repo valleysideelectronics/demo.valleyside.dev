@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Kettle Ridge Operations Platform · Demo by Valleyside Electronics</title>
+  <meta name="description" content="Interactive demo of custom back-office software built by Valleyside Electronics LLC in Russell Springs, Kentucky: orders, inventory, customers, service quotes and invoices, and a service-shop board for a fictional lakeside outfitter.">
+  <meta name="theme-color" content="#1d5a47">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div class="demo-banner" id="demo-banner" role="region" aria-label="Demo notice">
+    <p class="demo-banner__text"><strong>Demo</strong> · Kettle Ridge Outfitters is a fictional business with sample data · Built by Valleyside Electronics LLC</p>
+    <nav class="demo-banner__links" aria-label="Demo links">
+      <a href="/">&larr; All demos</a>
+      <a href="https://valleyside.dev">valleyside.dev</a>
+    </nav>
+  </div>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="shell">
+    <aside class="sidebar" aria-label="Primary">
+      <a class="brand" href="#/dashboard" aria-label="Kettle Ridge Outfitters, dashboard">
+        <span class="brand__mark" aria-hidden="true" id="brand-mark"></span>
+        <span class="brand__text"><span class="brand__name">Kettle Ridge</span><span class="brand__sub">Outfitters · Ops</span></span>
+      </a>
+      <nav class="nav" id="nav" aria-label="Sections"></nav>
+      <div class="sidebar__foot">
+        <div class="store-card">
+          <span class="store-card__label">Store</span>
+          <span class="store-card__name">Harbor Bend</span>
+          <span class="store-card__meta">4410 Harbor Bend Rd</span>
+        </div>
+        <button type="button" class="btn btn--ghost btn--block" data-action="reset">Reset demo data</button>
+      </div>
+    </aside>
+
+    <div class="main-col">
+      <header class="topbar">
+        <div class="topbar__brand">
+          <span class="brand__mark brand__mark--sm" aria-hidden="true" id="brand-mark-sm"></span>
+          <span class="brand__name">Kettle Ridge</span>
+        </div>
+        <div class="topbar__title" id="crumbs"></div>
+        <div class="topbar__actions">
+          <span class="topbar__user" aria-label="Signed in as Maggie (store manager), sample user"><span class="avatar" aria-hidden="true">MC</span><span class="topbar__username">Maggie C.</span></span>
+          <button type="button" class="btn btn--ghost btn--sm topbar__reset" data-action="reset">Reset demo</button>
+        </div>
+      </header>
+      <main id="main" class="main" tabindex="-1"></main>
+    </div>
+  </div>
+
+  <nav class="bottomnav" id="bottomnav" aria-label="Sections"></nav>
+
+  <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+  <div id="modal-root"></div>
+
+  <noscript><p class="noscript">This demo needs JavaScript enabled.</p></noscript>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
