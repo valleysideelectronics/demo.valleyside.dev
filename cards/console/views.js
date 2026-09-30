@@ -640,17 +640,32 @@ async function publishModal(app) {
   const token = await app.publish();
   if (!token) return;
   app.refresh();
+  const count = plural((app.rev.numbers || []).length, "canceled card");
+  // Hosted: the service already wrote the list where phones fetch it. The demo
+  // shows the hosted experience, so it doesn't ask anyone to upload a file either.
+  if (app.hosted || app.demo) {
+    showOverlay(h("div.modal", { role: "dialog", "aria-modal": "true" },
+      h("div.modal-head", h("span.pill.s-active", "Published"), h("h2", "Cancellation list published"),
+        h("button.icon-btn", { style: { marginLeft: "auto" }, "aria-label": "Close", on: { click: closeOverlay } }, icon("x"))),
+      h("div.modal-body",
+        h("p", { style: { margin: 0, color: "var(--ink-2)" } }, `Signed with your key and published: ${count}. Each list replaces the last, so it always contains every canceled card that hasn't expired.`),
+        h("ul", { style: { margin: 0, paddingLeft: "20px", color: "var(--ink-2)", fontSize: "13.5px" } },
+          h("li", "Nothing to upload. The console put the new list online for you."),
+          h("li", "Members' phones pick it up within a few hours of having signal, and those cards turn grey."),
+          app.demo ? h("li", { class: "muted" }, "In this demo, publishing is simulated and nothing leaves your browser.") : null)),
+      h("div.modal-foot", h("button.btn.primary", { on: { click: closeOverlay } }, "Done"))));
+    return;
+  }
   const fileName = (app.issuer.revocationUrl || "").split("/").pop() || "revoked.txt";
   const modal = h("div.modal", { role: "dialog", "aria-modal": "true" },
     h("div.modal-head", h("span.pill.s-active", "Signed"), h("h2", "Cancellation list ready"),
       h("button.icon-btn", { style: { marginLeft: "auto" }, "aria-label": "Close", on: { click: closeOverlay } }, icon("x"))),
     h("div.modal-body",
-      h("p", { style: { margin: 0, color: "var(--ink-2)" } }, `Signed with your key: ${plural((app.rev.numbers || []).length, "canceled card")}. Each list replaces the last, so it always contains every canceled card that hasn't expired.`),
+      h("p", { style: { margin: 0, color: "var(--ink-2)" } }, `Signed with your key: ${count}. Each list replaces the last, so it always contains every canceled card that hasn't expired.`),
       h("pre.json", { style: { maxHeight: "140px", whiteSpace: "pre-wrap", wordBreak: "break-all" } }, token),
       h("ol", { style: { margin: 0, paddingLeft: "20px", color: "var(--ink-2)", fontSize: "13.5px" } },
         h("li", "Upload this file, replacing the old one, at ", h("span.mono", app.issuer.revocationUrl || "(set the address in Settings)"), "."),
-        h("li", "Phones pick it up within a few hours of having signal."),
-        h("li", { class: "muted" }, "With the hosted Valleyside console this step happens automatically."))),
+        h("li", "Phones pick it up within a few hours of having signal."))),
     h("div.modal-foot",
       h("button.btn", { on: { click: () => copyText(token, "List copied") } }, icon("copy"), "Copy"),
       h("button.btn.primary", { on: { click: () => { const a = h("a", { href: URL.createObjectURL(new Blob([token], { type: "text/plain" })), download: fileName }); document.body.append(a); a.click(); a.remove(); } } }, icon("download"), `Download ${fileName}`)));
